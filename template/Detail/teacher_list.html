@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <a href="{% url 'insert' %}" class="navbar-brand">Insert Details</a>
+
+                <table class="table table-hover table-light table-bordered ">
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Father's Name</th>
+                        <th>Mother's Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Action</th>
+
+                        {% for teacher in object_list %}
+                        <tr>
+                            <td>{{teacher.id}}</td>
+                            <td>{{teacher.name}}</td>
+                            <td>{{teacher.father_name}}</td>
+                            <td>{{teacher.mother_name}}</td>
+                            <td>{{teacher.email}}</td>
+                            <td>{{teacher.contact}}</td>
+                            <td>{{teacher.address}}</td>
+                            <td><a href="{%url 'TeacherDeleteView' teacher.id  %}" class="btn btn-info">Delete</a></td>
+                            <td><a href="{%url 'TeacherEditView' teacher.id  %}" class="btn btn-primary">Edit</a></td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
