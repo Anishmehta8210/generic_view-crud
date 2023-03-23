@@ -11,20 +11,24 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a href="{% url 'insert' %}" class="navbar-brand">Notice</a>
+
+        <div class="d-flex mt-2 ms-5">
+            {% if user.is_authenticated %}
+            <h2 class="text-light">You are login {{user.username}}</h2>
+            <a  class="btn btn-info  rounded text-light " style="margin-left: 800px;" href="{% url 'LogoutView' %}">Logout</a>
+    
+            {% else %}
+           <div class="d-flex float-end gap-3 t" style="margin-left: 1000px;">
+            <a href="{% url 'LoginView' %}"  class="btn btn-info ">Login</a>
+            <a href="{% url 'SignUpView' %}" class="btn btn-warning"> Signup</a>
+           </div>
+    
+            {% endif %}
+        </div>
        
     </nav>
 
-    <div class="d-flex mt-2">
-        {% if user.is_authenticated %}
-        <h2>You are login {{user.username}}</h2>
-        <a  class="btn btn-info  rounded text-light " style="margin-left: 120px;" href="{% url 'LogoutView' %}">Logout</a>
-
-        {% else %}
-        <a href="{% url 'LoginView' %}">Login</a>
-        <a href="">Signup</a>
-
-        {% endif %}
-    </div>
+   
 
     {% block content %}
     {% endblock %}

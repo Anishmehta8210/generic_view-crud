@@ -25,4 +25,5 @@ urlpatterns = [
      path('<pk>/edit-teacher', TeacherEditView.as_view(),name="TeacherEditView"),
      path('login/', LoginView.as_view(),name="LoginView"),
      path('logout/', LogoutView.as_view(),name="LogoutView"),
+     path('register/', SignUpView.as_view(),name="SignUpView"),
 ]
